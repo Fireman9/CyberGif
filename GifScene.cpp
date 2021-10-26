@@ -8,7 +8,7 @@ GifScene::GifScene(QWidget *parent) {
     gif->setMovie(gifFile);
 
     // TODO: move to stylesheet file
-    clickToOpenBut->setStyleSheet("heightInput: 100%;");
+    clickToOpenBut->setStyleSheet("height: 100%;");
     gif->setAlignment(Qt::AlignVCenter | Qt::AlignHCenter);
 
     mainLayout = new QHBoxLayout();
@@ -16,11 +16,11 @@ GifScene::GifScene(QWidget *parent) {
     mainLayout->addWidget(clickToOpenBut);
     mainLayout->addWidget(gif);
 
-    connect(clickToOpenBut, &QPushButton::released, this, &GifScene::openFile);
-
     setOpenFileButToScene();
 
     setLayout(mainLayout);
+
+    connect(clickToOpenBut, &QPushButton::released, this, &GifScene::openFile);
 }
 
 void GifScene::openFile() {

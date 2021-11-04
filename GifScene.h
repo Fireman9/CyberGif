@@ -21,6 +21,10 @@ public slots:
 
     void openFile();
 
+signals:
+    void muteCommandButs();
+    void unmuteCommandButs();
+
 private:
     QString filename;
     QPushButton *clickToOpenBut;

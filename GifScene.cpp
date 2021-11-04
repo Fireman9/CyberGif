@@ -33,6 +33,8 @@ void GifScene::openFile() {
 void GifScene::setOpenFileButToScene() {
     gif->hide();
     clickToOpenBut->show();
+    
+    emit muteCommandButs();
 }
 
 void GifScene::setGifToScene() {
@@ -41,4 +43,6 @@ void GifScene::setGifToScene() {
 
     gifFile->setFileName(filename);
     gifFile->start();
+
+    emit unmuteCommandButs();
 }

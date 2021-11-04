@@ -13,6 +13,10 @@ Q_OBJECT
 public:
     MainWidget(QWidget *parent = nullptr);
 
+public slots:
+    void hideCommands();
+    void showCommands();
+
 private:
     QVBoxLayout *mainLayout;
 

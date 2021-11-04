@@ -24,6 +24,7 @@ public slots:
 signals:
     void muteCommandButs();
     void unmuteCommandButs();
+    void fileUploaded(QString filename);
 
 private:
     QString filename;

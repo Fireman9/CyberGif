@@ -27,13 +27,16 @@ void GifScene::openFile() {
     filename = QFileDialog::getOpenFileName(this, "Open File",
                                             "", "Gif file (*.gif)");
     qDebug() << filename;
-    if (filename != "") setGifToScene();
+    if (filename != "") {
+        setGifToScene();
+        emit fileUploaded(filename);
+    }
 }
 
 void GifScene::setOpenFileButToScene() {
     gif->hide();
     clickToOpenBut->show();
-    
+
     emit muteCommandButs();
 }
 

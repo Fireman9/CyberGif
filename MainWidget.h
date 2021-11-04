@@ -6,6 +6,7 @@
 
 #include "GifScene.h"
 #include "CommandsWidget.h"
+#include "FileManagement.h"
 
 class MainWidget : public QWidget {
 Q_OBJECT
@@ -22,6 +23,7 @@ private:
 
     GifScene *gifScene;
     CommandsWidget *commandsWidget;
+    FileManagement *fileManagement;
 };
 
 

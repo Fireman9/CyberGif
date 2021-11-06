@@ -18,6 +18,7 @@ MainWidget::MainWidget(QWidget *parent) {
     connect(gifScene, &GifScene::unmuteCommandButs, this, &MainWidget::showCommands);
 
     connect(gifScene, &GifScene::fileUploaded, fileManagement, &FileManagement::loadFile);
+    connect(gifScene, &GifScene::fileClosed, fileManagement, &FileManagement::deleteFile);
 }
 
 void MainWidget::hideCommands() {

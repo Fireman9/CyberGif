@@ -6,25 +6,40 @@
 #include <QString>
 #include <QLabel>
 #include <QPushButton>
-#include <QHBoxLayout>
+#include <QVBoxLayout>
 #include <QFileDialog>
-#include <QDebug>
 #include <QMovie>
+#include <QToolBar>
+#include <QToolButton>
 
 class GifScene : public QWidget {
 Q_OBJECT
 public:
     GifScene(QWidget *parent = nullptr);
 
-
 public slots:
 
     void openFile();
 
+    void saveFile();
+
+    void saveAsFile();
+
+    void closeFile();
+
 signals:
+
     void muteCommandButs();
+
     void unmuteCommandButs();
+
     void fileUploaded(QString filename);
+
+    void fileSave();
+
+    void fileSaveAs();
+
+    void fileClosed();
 
 private:
     QString filename;
@@ -32,11 +47,19 @@ private:
     QLabel *gif;
     QMovie *gifFile;
 
-    QHBoxLayout *mainLayout;
+    QToolBar *toolbar;
+    QToolButton *open;
+    QToolButton *save;
+    QToolButton *saveAs;
+    QToolButton *close;
+
+    QVBoxLayout *mainLayout;
 
     void setOpenFileButToScene();
 
     void setGifToScene();
+
+    void setToolBar();
 };
 
 

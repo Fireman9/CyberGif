@@ -33,9 +33,9 @@ signals:
 
     void unmuteCommandButs();
 
-    void fileUploaded(QString filename);
+    void fileUploaded(const QString& filename);
 
-    void fileSave();
+    void fileSave(const QString& filename);
 
     void fileSaveAs();
 

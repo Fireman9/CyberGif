@@ -28,6 +28,8 @@ GifScene::GifScene(QWidget *parent) {
     connect(open, &QToolButton::released, this, &GifScene::openFile);
 
     connect(close, &QToolButton::released, this, &GifScene::closeFile);
+
+    connect(save, &QToolButton::released, this, &GifScene::saveFile);
 }
 
 void GifScene::setToolBar() {
@@ -43,6 +45,10 @@ void GifScene::setToolBar() {
     close = new QToolButton();
     close->setText("Close");
 
+    save->setDisabled(true);
+    saveAs->setDisabled(true);
+    close->setDisabled(true);
+
     toolbar->addWidget(open);
     toolbar->addWidget(save);
     toolbar->addWidget(saveAs);
@@ -53,13 +59,13 @@ void GifScene::openFile() {
     filename = QFileDialog::getOpenFileName(this, "Open File",
                                             "", "Gif file (*.gif)");
     if (filename != "") {
-        setGifToScene();
         emit fileUploaded(filename);
+        setGifToScene();
     }
 }
 
 void GifScene::saveFile() {
-
+    emit fileSave(filename);
 }
 
 void GifScene::saveAsFile() {
@@ -76,6 +82,10 @@ void GifScene::setOpenFileButToScene() {
     gif->hide();
     gifFile->stop();
 
+    save->setDisabled(true);
+    saveAs->setDisabled(true);
+    close->setDisabled(true);
+
     clickToOpenBut->show();
     open->setDisabled(false);
 
@@ -86,8 +96,12 @@ void GifScene::setGifToScene() {
     clickToOpenBut->hide();
     open->setDisabled(true);
 
+    save->setDisabled(false);
+    saveAs->setDisabled(false);
+    close->setDisabled(false);
+
     gif->show();
-    gifFile->setFileName(filename);
+    gifFile->setFileName(".temp/temp.gif");
     gifFile->start();
 
     emit unmuteCommandButs();

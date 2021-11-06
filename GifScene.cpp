@@ -27,9 +27,11 @@ GifScene::GifScene(QWidget *parent) {
     connect(clickToOpenBut, &QPushButton::released, this, &GifScene::openFile);
     connect(open, &QToolButton::released, this, &GifScene::openFile);
 
-    connect(close, &QToolButton::released, this, &GifScene::closeFile);
-
     connect(save, &QToolButton::released, this, &GifScene::saveFile);
+
+    connect(saveAs, &QToolButton::released, this, &GifScene::saveAsFile);
+
+    connect(close, &QToolButton::released, this, &GifScene::closeFile);
 }
 
 void GifScene::setToolBar() {
@@ -57,7 +59,7 @@ void GifScene::setToolBar() {
 
 void GifScene::openFile() {
     filename = QFileDialog::getOpenFileName(this, "Open File",
-                                            "", "Gif file (*.gif)");
+                                            "/", "Gif file (*.gif)");
     if (filename != "") {
         emit fileUploaded(filename);
         setGifToScene();
@@ -69,7 +71,11 @@ void GifScene::saveFile() {
 }
 
 void GifScene::saveAsFile() {
-
+    QString newSaveAsFileName = QFileDialog::getSaveFileName(this, "Save File",
+                                                             "/", "Gif file (*.gif)");
+    if (newSaveAsFileName != "") {
+        emit fileSaveAs(newSaveAsFileName);
+    }
 }
 
 void GifScene::closeFile() {

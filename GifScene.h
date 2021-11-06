@@ -33,11 +33,11 @@ signals:
 
     void unmuteCommandButs();
 
-    void fileUploaded(const QString& filename);
+    void fileUploaded(const QString &filename);
 
-    void fileSave(const QString& filename);
+    void fileSave(const QString &filename);
 
-    void fileSaveAs();
+    void fileSaveAs(const QString &filename);
 
     void fileClosed();
 

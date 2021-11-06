@@ -12,9 +12,9 @@ public:
 
 public slots:
 
-    void loadFile(const QString& filename);
+    void loadFile(const QString &filename);
 
-    void saveFile(const QString& filename);
+    void saveFile(const QString &filename);
 
     void deleteFile();
 

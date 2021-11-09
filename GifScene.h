@@ -27,6 +27,10 @@ public slots:
 
     void closeFile();
 
+    void stopGif();
+
+    void updateGif();
+
 signals:
 
     void muteCommandButs();

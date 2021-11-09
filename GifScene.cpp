@@ -84,6 +84,15 @@ void GifScene::closeFile() {
     emit fileClosed();
 }
 
+void GifScene::stopGif() {
+    gifFile->stop();
+}
+
+void GifScene::updateGif() {
+    gifFile->setFileName(".temp/temp.gif");
+    gifFile->start();
+}
+
 void GifScene::setOpenFileButToScene() {
     gif->hide();
     gifFile->stop();

@@ -19,6 +19,10 @@ public slots:
     void crop(int x0, int y0, int width, int height);
 
     void optimize();
+
+signals:
+
+    void updateSceneSig();
 };
 
 

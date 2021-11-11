@@ -4,7 +4,7 @@
 
 #include <QWidget>
 #include <QVBoxLayout>
-#include <QLineEdit>
+#include <QSpinBox>
 #include <QCheckBox>
 #include <QPushButton>
 #include <QLabel>
@@ -17,11 +17,19 @@ public:
 
     QPushButton *getReturnBackBtn() const;
 
+public slots:
+
+    void applyResize();
+
+signals:
+
+    void applyResizeSig(int width, int height);
+
 private:
     QLabel *widthLbl;
     QLabel *heightLbl;
-    QLineEdit *widthInput;
-    QLineEdit *heightInput;
+    QSpinBox *widthInput;
+    QSpinBox *heightInput;
     QCheckBox *keepAspectRatio;
     QPushButton *returnBackBtn;
     QPushButton *applyBtn;

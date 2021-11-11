@@ -14,7 +14,10 @@ Q_OBJECT
 public:
     CommandsWidget(QWidget *parent = nullptr);
 
+    ResizeCommandWidget *getResizeCommandWidget() const;
+
 public slots:
+
     void changeToCommandsWidget();
 
     void changeToResizeWidget();

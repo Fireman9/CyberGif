@@ -46,3 +46,7 @@ void CommandsWidget::changeToResizeWidget() {
 
     resizeCommandWidget->show();
 }
+
+ResizeCommandWidget *CommandsWidget::getResizeCommandWidget() const {
+    return resizeCommandWidget;
+}

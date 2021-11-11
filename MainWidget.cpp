@@ -14,6 +14,8 @@ MainWidget::MainWidget(QWidget *parent) {
 
     setLayout(mainLayout);
 
+    commandsApplier = new CommandsApplier();
+
     connect(gifScene, &GifScene::muteCommandButs, this, &MainWidget::hideCommands);
     connect(gifScene, &GifScene::unmuteCommandButs, this, &MainWidget::showCommands);
 
@@ -21,6 +23,11 @@ MainWidget::MainWidget(QWidget *parent) {
     connect(gifScene, &GifScene::fileSave, fileManagement, &FileManagement::saveFile);
     connect(gifScene, &GifScene::fileSaveAs, fileManagement, &FileManagement::saveFile);
     connect(gifScene, &GifScene::fileClosed, fileManagement, &FileManagement::deleteFile);
+
+    connect(commandsApplier, &CommandsApplier::updateSceneSig, gifScene, &GifScene::updateGif);
+
+    connect(commandsWidget->getResizeCommandWidget(), &ResizeCommandWidget::applyResizeSig,
+            commandsApplier, &CommandsApplier::resize);
 }
 
 void MainWidget::hideCommands() {

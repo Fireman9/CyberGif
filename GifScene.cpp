@@ -89,6 +89,7 @@ void GifScene::stopGif() {
 }
 
 void GifScene::updateGif() {
+    stopGif();
     gifFile->setFileName(".temp/temp.gif");
     gifFile->start();
 }

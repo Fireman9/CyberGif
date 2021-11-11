@@ -28,6 +28,10 @@ MainWidget::MainWidget(QWidget *parent) {
 
     connect(commandsWidget->getResizeCommandWidget(), &ResizeCommandWidget::applyResizeSig,
             commandsApplier, &CommandsApplier::resize);
+    connect(commandsWidget->getResizeCommandWidget(), &ResizeCommandWidget::applyFitWidthSig,
+            commandsApplier, &CommandsApplier::fitWidth);
+    connect(commandsWidget->getResizeCommandWidget(), &ResizeCommandWidget::applyFitHeightSig,
+            commandsApplier, &CommandsApplier::fitHeight);
 }
 
 void MainWidget::hideCommands() {

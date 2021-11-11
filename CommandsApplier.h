@@ -10,7 +10,9 @@ public slots:
 
     void resize(int width, int height);
 
-    void scale(double k);
+    void fitWidth(int width);
+
+    void fitHeight(int height);
 
     void setSpeed(int speed);
 

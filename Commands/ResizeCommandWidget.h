@@ -21,16 +21,25 @@ public slots:
 
     void applyResize();
 
+    void muteWidth();
+
+    void muteHeight();
+
 signals:
 
     void applyResizeSig(int width, int height);
+
+    void applyFitWidthSig(int width);
+
+    void applyFitHeightSig(int height);
 
 private:
     QLabel *widthLbl;
     QLabel *heightLbl;
     QSpinBox *widthInput;
     QSpinBox *heightInput;
-    QCheckBox *keepAspectRatio;
+    QCheckBox *fitWidth;
+    QCheckBox *fitHeight;
     QPushButton *returnBackBtn;
     QPushButton *applyBtn;
 

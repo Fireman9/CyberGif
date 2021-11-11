@@ -7,9 +7,16 @@ void CommandsApplier::resize(int width, int height) {
     emit updateSceneSig();
 }
 
-void CommandsApplier::scale(double k) {
-    QString command = QString("gifsicle --scale %1 --batch .temp/temp.gif")
-            .arg(QString::number(k));
+void CommandsApplier::fitWidth(int width) {
+    QString command = QString("gifsicle --resize-width %1 --batch .temp/temp.gif")
+            .arg(QString::number(width));
+    system(command.toStdString().c_str());
+    emit updateSceneSig();
+}
+
+void CommandsApplier::fitHeight(int height) {
+    QString command = QString("gifsicle --resize-height %1 --batch .temp/temp.gif")
+            .arg(QString::number(height));
     system(command.toStdString().c_str());
     emit updateSceneSig();
 }

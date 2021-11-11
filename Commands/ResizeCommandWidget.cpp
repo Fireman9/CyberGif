@@ -9,7 +9,8 @@ ResizeCommandWidget::ResizeCommandWidget(QWidget *parent) {
     heightInput = new QSpinBox();
     heightInput->setMaximum(1080);
     heightInput->setMinimum(10);
-    keepAspectRatio = new QCheckBox("Keep aspect ratio");
+    fitWidth = new QCheckBox("Fit to width");
+    fitHeight = new QCheckBox("Fit to height");
     returnBackBtn = new QPushButton("Back");
     applyBtn = new QPushButton("Apply");
 
@@ -26,7 +27,8 @@ ResizeCommandWidget::ResizeCommandWidget(QWidget *parent) {
     whLayout->addLayout(heightLayout);
 
     aspectRatioLayout = new QVBoxLayout();
-    aspectRatioLayout->addWidget(keepAspectRatio);
+    aspectRatioLayout->addWidget(fitWidth);
+    aspectRatioLayout->addWidget(fitHeight);
 
     bottomLayout = new QHBoxLayout();
     bottomLayout->addLayout(whLayout);
@@ -43,10 +45,45 @@ ResizeCommandWidget::ResizeCommandWidget(QWidget *parent) {
     setLayout(mainLayout);
 
     connect(applyBtn, &QPushButton::released, this, &ResizeCommandWidget::applyResize);
+
+    connect(fitWidth, &QCheckBox::stateChanged, this, &ResizeCommandWidget::muteHeight);
+    connect(fitHeight, &QCheckBox::stateChanged, this, &ResizeCommandWidget::muteWidth);
+}
+
+void ResizeCommandWidget::muteWidth() {
+    if (fitHeight->isChecked()) {
+        widthInput->setDisabled(true);
+        fitWidth->setDisabled(true);
+
+        heightInput->setDisabled(false);
+        fitHeight->setDisabled(false);
+    } else {
+        widthInput->setDisabled(false);
+        fitWidth->setDisabled(false);
+    }
+}
+
+void ResizeCommandWidget::muteHeight() {
+    if (fitWidth->isChecked()) {
+        heightInput->setDisabled(true);
+        fitHeight->setDisabled(true);
+
+        widthInput->setDisabled(false);
+        fitWidth->setDisabled(false);
+    } else {
+        heightInput->setDisabled(false);
+        fitHeight->setDisabled(false);
+    }
 }
 
 void ResizeCommandWidget::applyResize() {
-    emit applyResizeSig(widthInput->value(), heightInput->value());
+    if (fitWidth->isChecked()) {
+        emit applyFitWidthSig(widthInput->value());
+    } else if (fitHeight->isChecked()) {
+        emit applyFitHeightSig(heightInput->value());
+    } else {
+        emit applyResizeSig(widthInput->value(), heightInput->value());
+    }
 }
 
 QPushButton *ResizeCommandWidget::getReturnBackBtn() const {

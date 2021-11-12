@@ -10,15 +10,35 @@ GifScene::GifScene(QWidget *parent) {
     gifFile = new QMovie();
     gif->setMovie(gifFile);
 
+    filenameLbl = new QLabel();
+    widthLbl = new QLabel();
+    heightLbl = new QLabel();
+    speedLbl = new QLabel();
+    sizeLbl = new QLabel();
+
     // TODO: move to stylesheet file
     clickToOpenBut->setStyleSheet("height: 100%;");
     gif->setAlignment(Qt::AlignVCenter | Qt::AlignHCenter);
 
     mainLayout = new QVBoxLayout();
+    bodyLayout = new QHBoxLayout();
+    infoLayout = new QVBoxLayout();
 
     mainLayout->addWidget(toolbar);
-    mainLayout->addWidget(clickToOpenBut);
-    mainLayout->addWidget(gif);
+
+    bodyLayout->addWidget(clickToOpenBut);
+    bodyLayout->addWidget(gif);
+
+    infoLayout->addWidget(filenameLbl);
+    infoLayout->addWidget(widthLbl);
+    infoLayout->addWidget(heightLbl);
+    infoLayout->addWidget(speedLbl);
+    infoLayout->addWidget(sizeLbl);
+
+    bodyLayout->addLayout(infoLayout);
+    hideInfo();
+
+    mainLayout->addLayout(bodyLayout);
 
     setOpenFileButToScene();
 
@@ -92,11 +112,14 @@ void GifScene::updateGif() {
     stopGif();
     gifFile->setFileName(".temp/temp.gif");
     gifFile->start();
+    setInfo();
 }
 
 void GifScene::setOpenFileButToScene() {
     gif->hide();
     gifFile->stop();
+
+    hideInfo();
 
     save->setDisabled(true);
     saveAs->setDisabled(true);
@@ -120,5 +143,37 @@ void GifScene::setGifToScene() {
     gifFile->setFileName(".temp/temp.gif");
     gifFile->start();
 
+    setInfo();
+    showInfo();
+
     emit unmuteCommandButs();
+}
+
+void GifScene::setInfo() {
+    filenameLbl->setText(QString("Filename: %1")
+                                 .arg(QFileInfo(filename).fileName()));
+    widthLbl->setText(QString("Width: %1 px")
+                              .arg(QString::number(gifFile->currentImage().width())));
+    heightLbl->setText(QString("Height: %1 px")
+                               .arg(QString::number(gifFile->currentImage().height())));
+    speedLbl->setText(QString("Frame delay: %1 ms")
+                              .arg(QString::number(gifFile->nextFrameDelay())));
+    sizeLbl->setText(QString("Filesize: %1 kb")
+                             .arg(QString::number(QFileInfo("./.temp/temp.gif").size() / 1000)));
+}
+
+void GifScene::showInfo() {
+    filenameLbl->show();
+    widthLbl->show();
+    heightLbl->show();
+    speedLbl->show();
+    sizeLbl->show();
+}
+
+void GifScene::hideInfo() {
+    filenameLbl->hide();
+    widthLbl->hide();
+    heightLbl->hide();
+    speedLbl->hide();
+    sizeLbl->hide();
 }

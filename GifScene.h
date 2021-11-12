@@ -7,10 +7,12 @@
 #include <QLabel>
 #include <QPushButton>
 #include <QVBoxLayout>
+#include <QHBoxLayout>
 #include <QFileDialog>
 #include <QMovie>
 #include <QToolBar>
 #include <QToolButton>
+#include <QFileInfo>
 
 class GifScene : public QWidget {
 Q_OBJECT
@@ -50,6 +52,11 @@ private:
     QPushButton *clickToOpenBut;
     QLabel *gif;
     QMovie *gifFile;
+    QLabel *filenameLbl;
+    QLabel *widthLbl;
+    QLabel *heightLbl;
+    QLabel *speedLbl;
+    QLabel *sizeLbl;
 
     QToolBar *toolbar;
     QToolButton *open;
@@ -58,12 +65,20 @@ private:
     QToolButton *close;
 
     QVBoxLayout *mainLayout;
+    QHBoxLayout *bodyLayout;
+    QVBoxLayout *infoLayout;
 
     void setOpenFileButToScene();
 
     void setGifToScene();
 
     void setToolBar();
+
+    void setInfo();
+
+    void showInfo();
+
+    void hideInfo();
 };
 
 

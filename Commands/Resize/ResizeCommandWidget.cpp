@@ -44,7 +44,7 @@ ResizeCommandWidget::ResizeCommandWidget(QWidget *parent) {
 
     setLayout(mainLayout);
 
-    connect(applyBtn, &QPushButton::released, this, &ResizeCommandWidget::applyResize);
+    connect(applyBtn, &QPushButton::released, this, &ResizeCommandWidget::apply);
 
     connect(fitWidth, &QCheckBox::stateChanged, this, &ResizeCommandWidget::muteHeight);
     connect(fitHeight, &QCheckBox::stateChanged, this, &ResizeCommandWidget::muteWidth);
@@ -76,7 +76,7 @@ void ResizeCommandWidget::muteHeight() {
     }
 }
 
-void ResizeCommandWidget::applyResize() {
+void ResizeCommandWidget::apply() {
     if (fitWidth->isChecked()) {
         emit applyFitWidthSig(widthInput->value());
     } else if (fitHeight->isChecked()) {

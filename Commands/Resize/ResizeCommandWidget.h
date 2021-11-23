@@ -19,7 +19,7 @@ public:
 
 public slots:
 
-    void applyResize();
+    void apply();
 
     void muteWidth();
 

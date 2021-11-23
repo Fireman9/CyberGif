@@ -32,6 +32,9 @@ MainWidget::MainWidget(QWidget *parent) {
             commandsApplier, &CommandsApplier::fitWidth);
     connect(commandsWidget->getResizeCommandWidget(), &ResizeCommandWidget::applyFitHeightSig,
             commandsApplier, &CommandsApplier::fitHeight);
+
+    connect(commandsWidget->getSpeedCommandWidget(), &SpeedCommandWidget::applySpeedSig,
+            commandsApplier, &CommandsApplier::setSpeed);
 }
 
 void MainWidget::hideCommands() {

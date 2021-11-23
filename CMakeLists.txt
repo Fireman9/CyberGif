@@ -13,7 +13,14 @@ find_package(Qt6 COMPONENTS
         Widgets
         REQUIRED)
 
-add_executable(CyberGif main.cpp MainWidget.cpp MainWidget.h GifScene.cpp GifScene.h CommandsWidget.cpp CommandsWidget.h Commands/ResizeCommandWidget.cpp Commands/ResizeCommandWidget.h FileManagement.cpp FileManagement.h CommandsApplier.cpp CommandsApplier.h)
+add_executable(CyberGif main.cpp
+        MainWidget.cpp MainWidget.h
+        GifScene.cpp GifScene.h
+        CommandsWidget.cpp CommandsWidget.h
+        Commands/Resize/ResizeCommandWidget.cpp Commands/Resize/ResizeCommandWidget.h
+        FileManagement.cpp FileManagement.h
+        CommandsApplier.cpp CommandsApplier.h
+        Commands/Speed/SpeedCommandWidget.cpp Commands/Speed/SpeedCommandWidget.hpp Commands/Speed/SpeedCommandWidget.ui)
 target_link_libraries(CyberGif
         Qt::Core
         Qt::Gui

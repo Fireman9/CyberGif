@@ -35,6 +35,9 @@ MainWidget::MainWidget(QWidget *parent) {
 
     connect(commandsWidget->getSpeedCommandWidget(), &SpeedCommandWidget::applySpeedSig,
             commandsApplier, &CommandsApplier::setSpeed);
+
+    connect(commandsWidget->getRotateCommandWidget(), &RotateCommandWidget::applyRotateSig,
+            commandsApplier, &CommandsApplier::rotate);
 }
 
 void MainWidget::hideCommands() {

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+    <class>RotateCommandWidget</class>
+    <widget class="QWidget" name="RotateCommandWidget">
+        <layout class="QVBoxLayout" name="mainLayout">
+            <item>
+                <widget class="QPushButton" name="returnBackBtn">
+                    <property name="text">
+                        <string>Back</string>
+                    </property>
+                </widget>
+            </item>
+            <item>
+                <layout class="QHBoxLayout" name="contentLayout">
+                    <item>
+                        <widget class="QLabel" name="infoLabel">
+                            <property name="text">
+                                <string>Rotate:</string>
+                            </property>
+                        </widget>
+                    </item>
+                    <item>
+                        <layout class="QHBoxLayout" name="rotateButtonsLayout">
+                            <item>
+                                <widget class="QPushButton" name="rotateLeftButton">
+                                    <property name="text">
+                                        <string/>
+                                    </property>
+                                    <property name="icon">
+                                        <iconset resource="../../resources.qrc">
+                                            <normaloff>:/images/rotateLeftIcon</normaloff>:/images/rotateLeftIcon
+                                        </iconset>
+                                    </property>
+                                    <property name="iconSize">
+                                        <size>
+                                            <width>25</width>
+                                            <height>25</height>
+                                        </size>
+                                    </property>
+                                </widget>
+                            </item>
+                            <item>
+                                <widget class="QPushButton" name="rotateRightButton">
+                                    <property name="text">
+                                        <string/>
+                                    </property>
+                                    <property name="icon">
+                                        <iconset resource="../../resources.qrc">
+                                            <normaloff>:/images/rotateRightIcon</normaloff>:/images/rotateRightIcon
+                                        </iconset>
+                                    </property>
+                                    <property name="iconSize">
+                                        <size>
+                                            <width>25</width>
+                                            <height>25</height>
+                                        </size>
+                                    </property>
+                                </widget>
+                            </item>
+                        </layout>
+                    </item>
+                </layout>
+            </item>
+        </layout>
+    </widget>
+    <resources>
+        <include location="../../resources.qrc"/>
+    </resources>
+    <connections/>
+</ui>

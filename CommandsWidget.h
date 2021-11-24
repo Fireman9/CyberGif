@@ -8,6 +8,7 @@
 
 #include "Commands/Resize/ResizeCommandWidget.h"
 #include "Commands/Speed/SpeedCommandWidget.hpp"
+#include "Commands/Rotate/RotateCommandWidget.hpp"
 
 class CommandsWidget : public QWidget {
 Q_OBJECT
@@ -19,6 +20,8 @@ public:
 
     SpeedCommandWidget *getSpeedCommandWidget() const;
 
+    RotateCommandWidget *getRotateCommandWidget() const;
+
 public slots:
 
     void changeToCommandsWidget();
@@ -26,6 +29,8 @@ public slots:
     void changeToResizeWidget();
 
     void changeToSpeedWidget();
+
+    void changeToRotateWidget();
 
 private:
     QPushButton *resize;
@@ -38,6 +43,7 @@ private:
 
     ResizeCommandWidget *resizeCommandWidget;
     SpeedCommandWidget *speedCommandWidget;
+    RotateCommandWidget *rotateCommandWidget;
 
     void hideCommands();
 };

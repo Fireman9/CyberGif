@@ -18,19 +18,23 @@ CommandsWidget::CommandsWidget(QWidget *parent) {
     resizeCommandWidget = new ResizeCommandWidget();
     speedCommandWidget = new SpeedCommandWidget();
     rotateCommandWidget = new RotateCommandWidget();
+    optimizeCommandWidget = new OptimizeCommandWidget();
 
     mainLayout->addWidget(resizeCommandWidget);
     mainLayout->addWidget(speedCommandWidget);
     mainLayout->addWidget(rotateCommandWidget);
+    mainLayout->addWidget(optimizeCommandWidget);
     resizeCommandWidget->hide();
     speedCommandWidget->hide();
     rotateCommandWidget->hide();
+    optimizeCommandWidget->hide();
 
     setLayout(mainLayout);
 
     connect(resize, &QPushButton::released, this, &CommandsWidget::changeToResizeWidget);
     connect(speed, &QPushButton::released, this, &CommandsWidget::changeToSpeedWidget);
     connect(rotate, &QPushButton::released, this, &CommandsWidget::changeToRotateWidget);
+    connect(optimize, &QPushButton::released, this, &CommandsWidget::changeToOptimizeWidget);
 
     connect(resizeCommandWidget->getReturnBackBtn(), &QPushButton::released,
             this, &CommandsWidget::changeToCommandsWidget);
@@ -38,12 +42,15 @@ CommandsWidget::CommandsWidget(QWidget *parent) {
             this, &CommandsWidget::changeToCommandsWidget);
     connect(rotateCommandWidget->getReturnBackBtn(), &QPushButton::released,
             this, &CommandsWidget::changeToCommandsWidget);
+    connect(optimizeCommandWidget->getReturnBackBtn(), &QPushButton::released,
+            this, &CommandsWidget::changeToCommandsWidget);
 }
 
 void CommandsWidget::changeToCommandsWidget() {
     resizeCommandWidget->hide();
     speedCommandWidget->hide();
     rotateCommandWidget->hide();
+    optimizeCommandWidget->hide();
 
     resize->show();
     speed->show();
@@ -67,6 +74,11 @@ void CommandsWidget::changeToRotateWidget() {
     rotateCommandWidget->show();
 }
 
+void CommandsWidget::changeToOptimizeWidget() {
+    hideCommands();
+    optimizeCommandWidget->show();
+}
+
 void CommandsWidget::hideCommands() {
     resize->hide();
     speed->hide();
@@ -85,4 +97,8 @@ SpeedCommandWidget *CommandsWidget::getSpeedCommandWidget() const {
 
 RotateCommandWidget *CommandsWidget::getRotateCommandWidget() const {
     return rotateCommandWidget;
+}
+
+OptimizeCommandWidget *CommandsWidget::getOptimizeCommandWidget() const {
+    return optimizeCommandWidget;
 }

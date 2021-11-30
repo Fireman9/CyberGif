@@ -22,7 +22,8 @@ add_executable(CyberGif main.cpp
         CommandsApplier.cpp CommandsApplier.h
         Commands/Speed/SpeedCommandWidget.cpp Commands/Speed/SpeedCommandWidget.hpp Commands/Speed/SpeedCommandWidget.ui
         Commands/Rotate/RotateCommandWidget.cpp Commands/Rotate/RotateCommandWidget.hpp Commands/Rotate/RotateCommandWidget.ui
-        resources.qrc)
+        resources.qrc
+        Commands/Optimize/OptimizeCommandWidget.cpp Commands/Optimize/OptimizeCommandWidget.hpp Commands/Optimize/OptimizeCommandWidget.ui)
 target_link_libraries(CyberGif
         Qt::Core
         Qt::Gui

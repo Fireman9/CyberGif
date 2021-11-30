@@ -38,6 +38,9 @@ MainWidget::MainWidget(QWidget *parent) {
 
     connect(commandsWidget->getRotateCommandWidget(), &RotateCommandWidget::applyRotateSig,
             commandsApplier, &CommandsApplier::rotate);
+
+    connect(commandsWidget->getOptimizeCommandWidget(), &OptimizeCommandWidget::applyOptimizeSig,
+            commandsApplier, &CommandsApplier::optimize);
 }
 
 void MainWidget::hideCommands() {

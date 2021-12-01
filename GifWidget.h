@@ -1,5 +1,5 @@
-#ifndef CYBERGIF_GIFSCENE_H
-#define CYBERGIF_GIFSCENE_H
+#ifndef CYBERGIF_GIFWIDGET_H
+#define CYBERGIF_GIFWIDGET_H
 
 
 #include <QWidget>
@@ -14,10 +14,10 @@
 #include <QToolButton>
 #include <QFileInfo>
 
-class GifScene : public QWidget {
+class GifWidget : public QWidget {
 Q_OBJECT
 public:
-    GifScene(QWidget *parent = nullptr);
+    GifWidget(QWidget *parent = nullptr);
 
 public slots:
 
@@ -82,4 +82,4 @@ private:
 };
 
 
-#endif //CYBERGIF_GIFSCENE_H
+#endif //CYBERGIF_GIFWIDGET_H

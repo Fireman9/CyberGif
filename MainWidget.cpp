@@ -1,9 +1,10 @@
 #include "MainWidget.h"
 
 MainWidget::MainWidget(QWidget *parent) {
-    gifScene = new GifScene();
+    gifScene = new GifWidget();
     commandsWidget = new CommandsWidget();
     fileManagement = new FileManagement();
+    commandsApplier = new CommandsApplier();
 
     mainLayout = new QVBoxLayout();
 
@@ -14,17 +15,15 @@ MainWidget::MainWidget(QWidget *parent) {
 
     setLayout(mainLayout);
 
-    commandsApplier = new CommandsApplier();
+    connect(gifScene, &GifWidget::muteCommandButs, this, &MainWidget::hideCommands);
+    connect(gifScene, &GifWidget::unmuteCommandButs, this, &MainWidget::showCommands);
 
-    connect(gifScene, &GifScene::muteCommandButs, this, &MainWidget::hideCommands);
-    connect(gifScene, &GifScene::unmuteCommandButs, this, &MainWidget::showCommands);
+    connect(gifScene, &GifWidget::fileUploaded, fileManagement, &FileManagement::loadFile);
+    connect(gifScene, &GifWidget::fileSave, fileManagement, &FileManagement::saveFile);
+    connect(gifScene, &GifWidget::fileSaveAs, fileManagement, &FileManagement::saveFile);
+    connect(gifScene, &GifWidget::fileClosed, fileManagement, &FileManagement::deleteFile);
 
-    connect(gifScene, &GifScene::fileUploaded, fileManagement, &FileManagement::loadFile);
-    connect(gifScene, &GifScene::fileSave, fileManagement, &FileManagement::saveFile);
-    connect(gifScene, &GifScene::fileSaveAs, fileManagement, &FileManagement::saveFile);
-    connect(gifScene, &GifScene::fileClosed, fileManagement, &FileManagement::deleteFile);
-
-    connect(commandsApplier, &CommandsApplier::updateSceneSig, gifScene, &GifScene::updateGif);
+    connect(commandsApplier, &CommandsApplier::updateSceneSig, gifScene, &GifWidget::updateGif);
 
     connect(commandsWidget->getResizeCommandWidget(), &ResizeCommandWidget::applyResizeSig,
             commandsApplier, &CommandsApplier::resize);
@@ -32,13 +31,12 @@ MainWidget::MainWidget(QWidget *parent) {
             commandsApplier, &CommandsApplier::fitWidth);
     connect(commandsWidget->getResizeCommandWidget(), &ResizeCommandWidget::applyFitHeightSig,
             commandsApplier, &CommandsApplier::fitHeight);
-
     connect(commandsWidget->getSpeedCommandWidget(), &SpeedCommandWidget::applySpeedSig,
             commandsApplier, &CommandsApplier::setSpeed);
-
     connect(commandsWidget->getRotateCommandWidget(), &RotateCommandWidget::applyRotateSig,
             commandsApplier, &CommandsApplier::rotate);
-
+    connect(commandsWidget->getCropCommandWidget(), &CropCommandWidget::applyCropSig,
+            commandsApplier, &CommandsApplier::crop);
     connect(commandsWidget->getOptimizeCommandWidget(), &OptimizeCommandWidget::applyOptimizeSig,
             commandsApplier, &CommandsApplier::optimize);
 }

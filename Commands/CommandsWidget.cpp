@@ -19,21 +19,25 @@ CommandsWidget::CommandsWidget(QWidget *parent) {
     speedCommandWidget = new SpeedCommandWidget();
     rotateCommandWidget = new RotateCommandWidget();
     optimizeCommandWidget = new OptimizeCommandWidget();
+    cropCommandWidget = new CropCommandWidget();
 
     mainLayout->addWidget(resizeCommandWidget);
     mainLayout->addWidget(speedCommandWidget);
     mainLayout->addWidget(rotateCommandWidget);
     mainLayout->addWidget(optimizeCommandWidget);
+    mainLayout->addWidget(cropCommandWidget);
     resizeCommandWidget->hide();
     speedCommandWidget->hide();
     rotateCommandWidget->hide();
     optimizeCommandWidget->hide();
+    cropCommandWidget->hide();
 
     setLayout(mainLayout);
 
     connect(resize, &QPushButton::released, this, &CommandsWidget::changeToResizeWidget);
     connect(speed, &QPushButton::released, this, &CommandsWidget::changeToSpeedWidget);
     connect(rotate, &QPushButton::released, this, &CommandsWidget::changeToRotateWidget);
+    connect(crop, &QPushButton::released, this, &CommandsWidget::changeToCropWidget);
     connect(optimize, &QPushButton::released, this, &CommandsWidget::changeToOptimizeWidget);
 
     connect(resizeCommandWidget->getReturnBackBtn(), &QPushButton::released,
@@ -41,6 +45,8 @@ CommandsWidget::CommandsWidget(QWidget *parent) {
     connect(speedCommandWidget->getReturnBackBtn(), &QPushButton::released,
             this, &CommandsWidget::changeToCommandsWidget);
     connect(rotateCommandWidget->getReturnBackBtn(), &QPushButton::released,
+            this, &CommandsWidget::changeToCommandsWidget);
+    connect(cropCommandWidget->getReturnBackBtn(), &QPushButton::released,
             this, &CommandsWidget::changeToCommandsWidget);
     connect(optimizeCommandWidget->getReturnBackBtn(), &QPushButton::released,
             this, &CommandsWidget::changeToCommandsWidget);
@@ -51,6 +57,7 @@ void CommandsWidget::changeToCommandsWidget() {
     speedCommandWidget->hide();
     rotateCommandWidget->hide();
     optimizeCommandWidget->hide();
+    cropCommandWidget->hide();
 
     resize->show();
     speed->show();
@@ -72,6 +79,11 @@ void CommandsWidget::changeToSpeedWidget() {
 void CommandsWidget::changeToRotateWidget() {
     hideCommands();
     rotateCommandWidget->show();
+}
+
+void CommandsWidget::changeToCropWidget() {
+    hideCommands();
+    cropCommandWidget->show();
 }
 
 void CommandsWidget::changeToOptimizeWidget() {
@@ -101,4 +113,8 @@ RotateCommandWidget *CommandsWidget::getRotateCommandWidget() const {
 
 OptimizeCommandWidget *CommandsWidget::getOptimizeCommandWidget() const {
     return optimizeCommandWidget;
+}
+
+CropCommandWidget *CommandsWidget::getCropCommandWidget() const {
+    return cropCommandWidget;
 }

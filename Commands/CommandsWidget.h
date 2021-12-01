@@ -6,10 +6,11 @@
 #include <QHBoxLayout>
 #include <QPushButton>
 
-#include "Commands/Resize/ResizeCommandWidget.hpp"
-#include "Commands/Speed/SpeedCommandWidget.hpp"
-#include "Commands/Rotate/RotateCommandWidget.hpp"
-#include "Commands/Optimize/OptimizeCommandWidget.hpp"
+#include "Resize/ResizeCommandWidget.hpp"
+#include "Speed/SpeedCommandWidget.hpp"
+#include "Rotate/RotateCommandWidget.hpp"
+#include "Crop/CropCommandWidget.hpp"
+#include "Optimize/OptimizeCommandWidget.hpp"
 
 class CommandsWidget : public QWidget {
 Q_OBJECT
@@ -25,6 +26,8 @@ public:
 
     OptimizeCommandWidget *getOptimizeCommandWidget() const;
 
+    CropCommandWidget *getCropCommandWidget() const;
+
 public slots:
 
     void changeToCommandsWidget();
@@ -36,6 +39,8 @@ public slots:
     void changeToRotateWidget();
 
     void changeToOptimizeWidget();
+
+    void changeToCropWidget();
 
 private:
     QPushButton *resize;
@@ -50,6 +55,7 @@ private:
     SpeedCommandWidget *speedCommandWidget;
     RotateCommandWidget *rotateCommandWidget;
     OptimizeCommandWidget *optimizeCommandWidget;
+    CropCommandWidget *cropCommandWidget;
 
     void hideCommands();
 };

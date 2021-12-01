@@ -1,6 +1,6 @@
-#include "GifScene.h"
+#include "GifWidget.h"
 
-GifScene::GifScene(QWidget *parent) {
+GifWidget::GifWidget(QWidget *parent) {
     toolbar = new QToolBar();
     setToolBar();
 
@@ -44,17 +44,15 @@ GifScene::GifScene(QWidget *parent) {
 
     setLayout(mainLayout);
 
-    connect(clickToOpenBut, &QPushButton::released, this, &GifScene::openFile);
-    connect(open, &QToolButton::released, this, &GifScene::openFile);
+    connect(clickToOpenBut, &QPushButton::released, this, &GifWidget::openFile);
 
-    connect(save, &QToolButton::released, this, &GifScene::saveFile);
-
-    connect(saveAs, &QToolButton::released, this, &GifScene::saveAsFile);
-
-    connect(close, &QToolButton::released, this, &GifScene::closeFile);
+    connect(open, &QToolButton::released, this, &GifWidget::openFile);
+    connect(save, &QToolButton::released, this, &GifWidget::saveFile);
+    connect(saveAs, &QToolButton::released, this, &GifWidget::saveAsFile);
+    connect(close, &QToolButton::released, this, &GifWidget::closeFile);
 }
 
-void GifScene::setToolBar() {
+void GifWidget::setToolBar() {
     open = new QToolButton();
     open->setText("Open");
 
@@ -77,7 +75,7 @@ void GifScene::setToolBar() {
     toolbar->addWidget(close);
 }
 
-void GifScene::openFile() {
+void GifWidget::openFile() {
     filename = QFileDialog::getOpenFileName(this, "Open File",
                                             "/", "Gif file (*.gif)");
     if (filename != "") {
@@ -86,11 +84,11 @@ void GifScene::openFile() {
     }
 }
 
-void GifScene::saveFile() {
+void GifWidget::saveFile() {
     emit fileSave(filename);
 }
 
-void GifScene::saveAsFile() {
+void GifWidget::saveAsFile() {
     QString newSaveAsFileName = QFileDialog::getSaveFileName(this, "Save File",
                                                              "/", "Gif file (*.gif)");
     if (newSaveAsFileName != "") {
@@ -98,24 +96,23 @@ void GifScene::saveAsFile() {
     }
 }
 
-void GifScene::closeFile() {
+void GifWidget::closeFile() {
     setOpenFileButToScene();
-
     emit fileClosed();
 }
 
-void GifScene::stopGif() {
+void GifWidget::stopGif() {
     gifFile->stop();
 }
 
-void GifScene::updateGif() {
+void GifWidget::updateGif() {
     stopGif();
     gifFile->setFileName(".temp/temp.gif");
     gifFile->start();
     setInfo();
 }
 
-void GifScene::setOpenFileButToScene() {
+void GifWidget::setOpenFileButToScene() {
     gif->hide();
     gifFile->stop();
 
@@ -131,7 +128,7 @@ void GifScene::setOpenFileButToScene() {
     emit muteCommandButs();
 }
 
-void GifScene::setGifToScene() {
+void GifWidget::setGifToScene() {
     clickToOpenBut->hide();
     open->setDisabled(true);
 
@@ -149,7 +146,7 @@ void GifScene::setGifToScene() {
     emit unmuteCommandButs();
 }
 
-void GifScene::setInfo() {
+void GifWidget::setInfo() {
     filenameLbl->setText(QString("Filename: %1")
                                  .arg(QFileInfo(filename).fileName()));
     widthLbl->setText(QString("Width: %1 px")
@@ -162,7 +159,7 @@ void GifScene::setInfo() {
                              .arg(QString::number(QFileInfo("./.temp/temp.gif").size() / 1000)));
 }
 
-void GifScene::showInfo() {
+void GifWidget::showInfo() {
     filenameLbl->show();
     widthLbl->show();
     heightLbl->show();
@@ -170,7 +167,7 @@ void GifScene::showInfo() {
     sizeLbl->show();
 }
 
-void GifScene::hideInfo() {
+void GifWidget::hideInfo() {
     filenameLbl->hide();
     widthLbl->hide();
     heightLbl->hide();

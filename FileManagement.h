@@ -18,8 +18,6 @@ public slots:
 
     void deleteFile();
 
-private:
-
 };
 
 

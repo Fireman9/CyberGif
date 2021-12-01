@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+    <class>CropCommandWidget</class>
+    <widget class="QWidget" name="CropCommandWidget">
+        <layout class="QVBoxLayout" name="mainLayout">
+            <item>
+                <widget class="QPushButton" name="returnBackBtn">
+                    <property name="text">
+                        <string>Back</string>
+                    </property>
+                </widget>
+            </item>
+            <item>
+                <layout class="QHBoxLayout" name="contentLayout">
+                    <item>
+                        <layout class="QGridLayout" name="gridLayout">
+                            <item row="1" column="0">
+                                <layout class="QHBoxLayout" name="yLayout">
+                                    <item>
+                                        <widget class="QLabel" name="yLabel">
+                                            <property name="text">
+                                                <string>Y:</string>
+                                            </property>
+                                        </widget>
+                                    </item>
+                                    <item>
+                                        <widget class="QSpinBox" name="yInput">
+                                            <property name="minimum">
+                                                <number>0</number>
+                                            </property>
+                                            <property name="maximum">
+                                                <number>1080</number>
+                                            </property>
+                                        </widget>
+                                    </item>
+                                </layout>
+                            </item>
+                            <item row="1" column="1">
+                                <layout class="QHBoxLayout" name="heightLayout">
+                                    <item>
+                                        <widget class="QLabel" name="heightLabel">
+                                            <property name="text">
+                                                <string>Height</string>
+                                            </property>
+                                        </widget>
+                                    </item>
+                                    <item>
+                                        <widget class="QSpinBox" name="heightInput">
+                                            <property name="minimum">
+                                                <number>0</number>
+                                            </property>
+                                            <property name="maximum">
+                                                <number>1080</number>
+                                            </property>
+                                        </widget>
+                                    </item>
+                                </layout>
+                            </item>
+                            <item row="0" column="0">
+                                <layout class="QHBoxLayout" name="xLayout">
+                                    <item>
+                                        <widget class="QLabel" name="xLabel">
+                                            <property name="text">
+                                                <string>X:</string>
+                                            </property>
+                                        </widget>
+                                    </item>
+                                    <item>
+                                        <widget class="QSpinBox" name="xInput">
+                                            <property name="minimum">
+                                                <number>0</number>
+                                            </property>
+                                            <property name="maximum">
+                                                <number>1920</number>
+                                            </property>
+                                        </widget>
+                                    </item>
+                                </layout>
+                            </item>
+                            <item row="0" column="1">
+                                <layout class="QHBoxLayout" name="widthLayout">
+                                    <item>
+                                        <widget class="QLabel" name="widthLabel">
+                                            <property name="text">
+                                                <string>Width:</string>
+                                            </property>
+                                        </widget>
+                                    </item>
+                                    <item>
+                                        <widget class="QSpinBox" name="widthInput">
+                                            <property name="minimum">
+                                                <number>0</number>
+                                            </property>
+                                            <property name="maximum">
+                                                <number>1920</number>
+                                            </property>
+                                        </widget>
+                                    </item>
+                                </layout>
+                            </item>
+                        </layout>
+                    </item>
+                    <item>
+                        <spacer name="horizontalSpacer">
+                            <property name="orientation">
+                                <enum>Qt::Horizontal</enum>
+                            </property>
+                            <property name="sizeHint" stdset="0">
+                                <size>
+                                    <width>40</width>
+                                    <height>20</height>
+                                </size>
+                            </property>
+                        </spacer>
+                    </item>
+                    <item>
+                        <widget class="QPushButton" name="applyButton">
+                            <property name="text">
+                                <string>Apply</string>
+                            </property>
+                        </widget>
+                    </item>
+                </layout>
+            </item>
+        </layout>
+    </widget>
+    <resources/>
+    <connections/>
+</ui>

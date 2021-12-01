@@ -4,8 +4,8 @@
 
 #include <QWidget>
 
-#include "GifScene.h"
-#include "CommandsWidget.h"
+#include "GifWidget.h"
+#include "Commands/CommandsWidget.h"
 #include "FileManagement.h"
 #include "CommandsApplier.h"
 
@@ -24,7 +24,7 @@ public slots:
 private:
     QVBoxLayout *mainLayout;
 
-    GifScene *gifScene;
+    GifWidget *gifScene;
     CommandsWidget *commandsWidget;
     FileManagement *fileManagement;
     CommandsApplier *commandsApplier;

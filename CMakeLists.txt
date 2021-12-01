@@ -17,13 +17,13 @@ add_executable(CyberGif main.cpp
         MainWidget.cpp MainWidget.h
         GifScene.cpp GifScene.h
         CommandsWidget.cpp CommandsWidget.h
-        Commands/Resize/ResizeCommandWidget.cpp Commands/Resize/ResizeCommandWidget.h
         FileManagement.cpp FileManagement.h
         CommandsApplier.cpp CommandsApplier.h
         Commands/Speed/SpeedCommandWidget.cpp Commands/Speed/SpeedCommandWidget.hpp Commands/Speed/SpeedCommandWidget.ui
         Commands/Rotate/RotateCommandWidget.cpp Commands/Rotate/RotateCommandWidget.hpp Commands/Rotate/RotateCommandWidget.ui
         resources.qrc
-        Commands/Optimize/OptimizeCommandWidget.cpp Commands/Optimize/OptimizeCommandWidget.hpp Commands/Optimize/OptimizeCommandWidget.ui)
+        Commands/Optimize/OptimizeCommandWidget.cpp Commands/Optimize/OptimizeCommandWidget.hpp Commands/Optimize/OptimizeCommandWidget.ui
+        Commands/Resize/ResizeCommandWidget.cpp Commands/Resize/ResizeCommandWidget.hpp Commands/Resize/ResizeCommandWidget.ui)
 target_link_libraries(CyberGif
         Qt::Core
         Qt::Gui

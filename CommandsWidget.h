@@ -6,7 +6,7 @@
 #include <QHBoxLayout>
 #include <QPushButton>
 
-#include "Commands/Resize/ResizeCommandWidget.h"
+#include "Commands/Resize/ResizeCommandWidget.hpp"
 #include "Commands/Speed/SpeedCommandWidget.hpp"
 #include "Commands/Rotate/RotateCommandWidget.hpp"
 #include "Commands/Optimize/OptimizeCommandWidget.hpp"

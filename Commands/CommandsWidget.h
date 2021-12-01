@@ -30,17 +30,17 @@ public:
 
 public slots:
 
-    void changeToCommandsWidget();
+    void toCommandsWidgetSlot();
 
-    void changeToResizeWidget();
+    void toResizeWidgetSlot();
 
-    void changeToSpeedWidget();
+    void toSpeedWidgetSlot();
 
-    void changeToRotateWidget();
+    void toRotateWidgetSlot();
 
-    void changeToOptimizeWidget();
+    void toOptimizeWidgetSlot();
 
-    void changeToCropWidget();
+    void toCropWidgetSlot();
 
 private:
     QPushButton *resize;

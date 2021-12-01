@@ -17,14 +17,14 @@ public:
 
 public slots:
 
-    void hideCommands();
+    void hideCommandsSlot();
 
-    void showCommands();
+    void showCommandsSlot();
 
 private:
     QVBoxLayout *mainLayout;
 
-    GifWidget *gifScene;
+    GifWidget *gifWidget;
     CommandsWidget *commandsWidget;
     FileManagement *fileManagement;
     CommandsApplier *commandsApplier;

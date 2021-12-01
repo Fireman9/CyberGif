@@ -21,31 +21,31 @@ public:
 
 public slots:
 
-    void openFile();
+    void openFileSlot();
 
-    void saveFile();
+    void saveFileSlot();
 
-    void saveAsFile();
+    void saveAsFileSlot();
 
-    void closeFile();
+    void closeFileSlot();
 
-    void stopGif();
+    void stopGifSlot();
 
-    void updateGif();
+    void updateGifSlot();
 
 signals:
 
-    void muteCommandButs();
+    void muteCommandButsSignal();
 
-    void unmuteCommandButs();
+    void unmuteCommandButsSignal();
 
-    void fileUploaded(const QString &filename);
+    void fileUploadedSignal(const QString &filename);
 
-    void fileSave(const QString &filename);
+    void fileSaveSignal(const QString &filename);
 
-    void fileSaveAs(const QString &filename);
+    void fileSaveAsSignal(const QString &filename);
 
-    void fileClosed();
+    void fileClosedSignal();
 
 private:
     QString filename;

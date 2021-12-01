@@ -8,15 +8,13 @@
 
 class FileManagement : public QObject {
 Q_OBJECT
-public:
-
 public slots:
 
-    void loadFile(const QString &filename);
+    void loadFileSlot(const QString &filename);
 
-    void saveFile(const QString &filename);
+    void saveFileSlot(const QString &filename);
 
-    void deleteFile();
+    void deleteFileSlot();
 
 };
 

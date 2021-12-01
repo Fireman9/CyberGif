@@ -5,15 +5,15 @@
 OptimizeCommandWidget::OptimizeCommandWidget(QWidget *parent) :
         QWidget(parent), ui(new Ui::OptimizeCommandWidget) {
     ui->setupUi(this);
-    connect(ui->applyButton, &QPushButton::released, this, &OptimizeCommandWidget::apply);
+    connect(ui->applyButton, &QPushButton::released, this, &OptimizeCommandWidget::applySlot);
 }
 
 QPushButton *OptimizeCommandWidget::getReturnBackBtn() const {
     return ui->returnBackBtn;
 }
 
-void OptimizeCommandWidget::apply() {
-    emit applyOptimizeSig();
+void OptimizeCommandWidget::applySlot() {
+    emit applyOptimizeSignal();
 }
 
 OptimizeCommandWidget::~OptimizeCommandWidget() {

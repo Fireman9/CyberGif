@@ -21,13 +21,13 @@ public:
 
 public slots:
 
-    void rotateRight();
+    void rotateRightSlot();
 
-    void rotateLeft();
+    void rotateLeftSlot();
 
 signals:
 
-    void applyRotateSig(int degrees);
+    void applyRotateSignal(int degrees);
 
 private:
     Ui::RotateCommandWidget *ui;

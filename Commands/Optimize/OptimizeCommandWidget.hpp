@@ -21,11 +21,11 @@ public:
 
 public slots:
 
-    void apply();
+    void applySlot();
 
 signals:
 
-    void applyOptimizeSig();
+    void applyOptimizeSignal();
 
 private:
     Ui::OptimizeCommandWidget *ui;

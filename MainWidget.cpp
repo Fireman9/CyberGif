@@ -1,50 +1,50 @@
 #include "MainWidget.h"
 
 MainWidget::MainWidget(QWidget *parent) {
-    gifScene = new GifWidget();
+    gifWidget = new GifWidget();
     commandsWidget = new CommandsWidget();
     fileManagement = new FileManagement();
     commandsApplier = new CommandsApplier();
 
     mainLayout = new QVBoxLayout();
 
-    mainLayout->addWidget(gifScene);
+    mainLayout->addWidget(gifWidget);
     mainLayout->addWidget(commandsWidget);
 
     commandsWidget->hide();
 
     setLayout(mainLayout);
 
-    connect(gifScene, &GifWidget::muteCommandButs, this, &MainWidget::hideCommands);
-    connect(gifScene, &GifWidget::unmuteCommandButs, this, &MainWidget::showCommands);
+    connect(gifWidget, &GifWidget::muteCommandButsSignal, this, &MainWidget::hideCommandsSlot);
+    connect(gifWidget, &GifWidget::unmuteCommandButsSignal, this, &MainWidget::showCommandsSlot);
 
-    connect(gifScene, &GifWidget::fileUploaded, fileManagement, &FileManagement::loadFile);
-    connect(gifScene, &GifWidget::fileSave, fileManagement, &FileManagement::saveFile);
-    connect(gifScene, &GifWidget::fileSaveAs, fileManagement, &FileManagement::saveFile);
-    connect(gifScene, &GifWidget::fileClosed, fileManagement, &FileManagement::deleteFile);
+    connect(gifWidget, &GifWidget::fileUploadedSignal, fileManagement, &FileManagement::loadFileSlot);
+    connect(gifWidget, &GifWidget::fileSaveSignal, fileManagement, &FileManagement::saveFileSlot);
+    connect(gifWidget, &GifWidget::fileSaveAsSignal, fileManagement, &FileManagement::saveFileSlot);
+    connect(gifWidget, &GifWidget::fileClosedSignal, fileManagement, &FileManagement::deleteFileSlot);
 
-    connect(commandsApplier, &CommandsApplier::updateSceneSig, gifScene, &GifWidget::updateGif);
+    connect(commandsApplier, &CommandsApplier::updateSceneSignal, gifWidget, &GifWidget::updateGifSlot);
 
-    connect(commandsWidget->getResizeCommandWidget(), &ResizeCommandWidget::applyResizeSig,
-            commandsApplier, &CommandsApplier::resize);
-    connect(commandsWidget->getResizeCommandWidget(), &ResizeCommandWidget::applyFitWidthSig,
-            commandsApplier, &CommandsApplier::fitWidth);
-    connect(commandsWidget->getResizeCommandWidget(), &ResizeCommandWidget::applyFitHeightSig,
-            commandsApplier, &CommandsApplier::fitHeight);
-    connect(commandsWidget->getSpeedCommandWidget(), &SpeedCommandWidget::applySpeedSig,
-            commandsApplier, &CommandsApplier::setSpeed);
-    connect(commandsWidget->getRotateCommandWidget(), &RotateCommandWidget::applyRotateSig,
-            commandsApplier, &CommandsApplier::rotate);
-    connect(commandsWidget->getCropCommandWidget(), &CropCommandWidget::applyCropSig,
-            commandsApplier, &CommandsApplier::crop);
-    connect(commandsWidget->getOptimizeCommandWidget(), &OptimizeCommandWidget::applyOptimizeSig,
-            commandsApplier, &CommandsApplier::optimize);
+    connect(commandsWidget->getResizeCommandWidget(), &ResizeCommandWidget::applyResizeSignal,
+            commandsApplier, &CommandsApplier::resizeSlot);
+    connect(commandsWidget->getResizeCommandWidget(), &ResizeCommandWidget::applyFitWidthSignal,
+            commandsApplier, &CommandsApplier::fitWidthSlot);
+    connect(commandsWidget->getResizeCommandWidget(), &ResizeCommandWidget::applyFitHeightSignal,
+            commandsApplier, &CommandsApplier::fitHeightSlot);
+    connect(commandsWidget->getSpeedCommandWidget(), &SpeedCommandWidget::applySpeedSignal,
+            commandsApplier, &CommandsApplier::setSpeedSlot);
+    connect(commandsWidget->getRotateCommandWidget(), &RotateCommandWidget::applyRotateSignal,
+            commandsApplier, &CommandsApplier::rotateSlot);
+    connect(commandsWidget->getCropCommandWidget(), &CropCommandWidget::applyCropSignal,
+            commandsApplier, &CommandsApplier::cropSlot);
+    connect(commandsWidget->getOptimizeCommandWidget(), &OptimizeCommandWidget::applyOptimizeSignal,
+            commandsApplier, &CommandsApplier::optimizeSlot);
 }
 
-void MainWidget::hideCommands() {
+void MainWidget::hideCommandsSlot() {
     commandsWidget->hide();
 }
 
-void MainWidget::showCommands() {
+void MainWidget::showCommandsSlot() {
     commandsWidget->show();
 }

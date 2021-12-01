@@ -8,23 +8,23 @@ class CommandsApplier : public QObject {
 Q_OBJECT
 public slots:
 
-    void resize(int width, int height);
+    void resizeSlot(int width, int height);
 
-    void fitWidth(int width);
+    void fitWidthSlot(int width);
 
-    void fitHeight(int height);
+    void fitHeightSlot(int height);
 
-    void setSpeed(int speed);
+    void setSpeedSlot(int speed);
 
-    void rotate(int degrees);
+    void rotateSlot(int degrees);
 
-    void crop(int x0, int y0, int width, int height);
+    void cropSlot(int x0, int y0, int width, int height);
 
-    void optimize();
+    void optimizeSlot();
 
 signals:
 
-    void updateSceneSig();
+    void updateSceneSignal();
 };
 
 

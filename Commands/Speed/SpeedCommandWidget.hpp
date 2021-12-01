@@ -21,11 +21,11 @@ public:
 
 public slots:
 
-    void apply();
+    void applySlot();
 
 signals:
 
-    void applySpeedSig(int frameDelay);
+    void applySpeedSignal(int frameDelay);
 
 private:
     Ui::SpeedCommandWidget *ui;

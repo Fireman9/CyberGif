@@ -25,19 +25,19 @@ public:
 
 public slots:
 
-    void apply();
+    void applySlot();
 
-    void muteWidth();
+    void muteWidthSlot();
 
-    void muteHeight();
+    void muteHeightSlot();
 
 signals:
 
-    void applyResizeSig(int width, int height);
+    void applyResizeSignal(int width, int height);
 
-    void applyFitWidthSig(int width);
+    void applyFitWidthSignal(int width);
 
-    void applyFitHeightSig(int height);
+    void applyFitHeightSignal(int height);
 
 private:
     Ui::ResizeCommandWidget *ui;

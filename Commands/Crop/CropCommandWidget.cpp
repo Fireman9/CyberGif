@@ -5,12 +5,12 @@
 CropCommandWidget::CropCommandWidget(QWidget *parent) :
         QWidget(parent), ui(new Ui::CropCommandWidget) {
     ui->setupUi(this);
-    connect(ui->applyButton, &QPushButton::released, this, &CropCommandWidget::apply);
+    connect(ui->applyButton, &QPushButton::released, this, &CropCommandWidget::applySlot);
 }
 
-void CropCommandWidget::apply() {
-    emit applyCropSig(ui->xInput->value(), ui->yInput->value(),
-                      ui->widthInput->value(), ui->heightInput->value());
+void CropCommandWidget::applySlot() {
+    emit applyCropSignal(ui->xInput->value(), ui->yInput->value(),
+                         ui->widthInput->value(), ui->heightInput->value());
 }
 
 QPushButton *CropCommandWidget::getReturnBackBtn() const {

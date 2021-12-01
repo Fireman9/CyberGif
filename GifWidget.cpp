@@ -44,12 +44,12 @@ GifWidget::GifWidget(QWidget *parent) {
 
     setLayout(mainLayout);
 
-    connect(clickToOpenBut, &QPushButton::released, this, &GifWidget::openFile);
+    connect(clickToOpenBut, &QPushButton::released, this, &GifWidget::openFileSlot);
 
-    connect(open, &QToolButton::released, this, &GifWidget::openFile);
-    connect(save, &QToolButton::released, this, &GifWidget::saveFile);
-    connect(saveAs, &QToolButton::released, this, &GifWidget::saveAsFile);
-    connect(close, &QToolButton::released, this, &GifWidget::closeFile);
+    connect(open, &QToolButton::released, this, &GifWidget::openFileSlot);
+    connect(save, &QToolButton::released, this, &GifWidget::saveFileSlot);
+    connect(saveAs, &QToolButton::released, this, &GifWidget::saveAsFileSlot);
+    connect(close, &QToolButton::released, this, &GifWidget::closeFileSlot);
 }
 
 void GifWidget::setToolBar() {
@@ -75,38 +75,38 @@ void GifWidget::setToolBar() {
     toolbar->addWidget(close);
 }
 
-void GifWidget::openFile() {
+void GifWidget::openFileSlot() {
     filename = QFileDialog::getOpenFileName(this, "Open File",
                                             "/", "Gif file (*.gif)");
     if (filename != "") {
-        emit fileUploaded(filename);
+        emit fileUploadedSignal(filename);
         setGifToScene();
     }
 }
 
-void GifWidget::saveFile() {
-    emit fileSave(filename);
+void GifWidget::saveFileSlot() {
+    emit fileSaveSignal(filename);
 }
 
-void GifWidget::saveAsFile() {
+void GifWidget::saveAsFileSlot() {
     QString newSaveAsFileName = QFileDialog::getSaveFileName(this, "Save File",
                                                              "/", "Gif file (*.gif)");
     if (newSaveAsFileName != "") {
-        emit fileSaveAs(newSaveAsFileName);
+        emit fileSaveAsSignal(newSaveAsFileName);
     }
 }
 
-void GifWidget::closeFile() {
+void GifWidget::closeFileSlot() {
     setOpenFileButToScene();
-    emit fileClosed();
+    emit fileClosedSignal();
 }
 
-void GifWidget::stopGif() {
+void GifWidget::stopGifSlot() {
     gifFile->stop();
 }
 
-void GifWidget::updateGif() {
-    stopGif();
+void GifWidget::updateGifSlot() {
+    stopGifSlot();
     gifFile->setFileName(".temp/temp.gif");
     gifFile->start();
     setInfo();
@@ -125,7 +125,7 @@ void GifWidget::setOpenFileButToScene() {
     clickToOpenBut->show();
     open->setDisabled(false);
 
-    emit muteCommandButs();
+    emit muteCommandButsSignal();
 }
 
 void GifWidget::setGifToScene() {
@@ -143,7 +143,7 @@ void GifWidget::setGifToScene() {
     setInfo();
     showInfo();
 
-    emit unmuteCommandButs();
+    emit unmuteCommandButsSignal();
 }
 
 void GifWidget::setInfo() {

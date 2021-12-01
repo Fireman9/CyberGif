@@ -21,11 +21,11 @@ public:
 
 public slots:
 
-    void apply();
+    void applySlot();
 
 signals:
 
-    void applyCropSig(int x0, int y0, int width, int height);
+    void applyCropSignal(int x0, int y0, int width, int height);
 
 private:
     Ui::CropCommandWidget *ui;

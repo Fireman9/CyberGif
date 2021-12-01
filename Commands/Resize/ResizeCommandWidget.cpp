@@ -5,13 +5,13 @@
 ResizeCommandWidget::ResizeCommandWidget(QWidget *parent) :
         QWidget(parent), ui(new Ui::ResizeCommandWidget) {
     ui->setupUi(this);
-    connect(ui->applyBtn, &QPushButton::released, this, &ResizeCommandWidget::apply);
+    connect(ui->applyBtn, &QPushButton::released, this, &ResizeCommandWidget::applySlot);
 
-    connect(ui->fitWidth, &QCheckBox::stateChanged, this, &ResizeCommandWidget::muteHeight);
-    connect(ui->fitHeight, &QCheckBox::stateChanged, this, &ResizeCommandWidget::muteWidth);
+    connect(ui->fitWidth, &QCheckBox::stateChanged, this, &ResizeCommandWidget::muteHeightSlot);
+    connect(ui->fitHeight, &QCheckBox::stateChanged, this, &ResizeCommandWidget::muteWidthSlot);
 }
 
-void ResizeCommandWidget::muteWidth() {
+void ResizeCommandWidget::muteWidthSlot() {
     if (ui->fitHeight->isChecked()) {
         ui->widthInput->setDisabled(true);
         ui->fitWidth->setDisabled(true);
@@ -24,7 +24,7 @@ void ResizeCommandWidget::muteWidth() {
     }
 }
 
-void ResizeCommandWidget::muteHeight() {
+void ResizeCommandWidget::muteHeightSlot() {
     if (ui->fitWidth->isChecked()) {
         ui->heightInput->setDisabled(true);
         ui->fitHeight->setDisabled(true);
@@ -37,13 +37,13 @@ void ResizeCommandWidget::muteHeight() {
     }
 }
 
-void ResizeCommandWidget::apply() {
+void ResizeCommandWidget::applySlot() {
     if (ui->fitWidth->isChecked()) {
-        emit applyFitWidthSig(ui->widthInput->value());
+        emit applyFitWidthSignal(ui->widthInput->value());
     } else if (ui->fitHeight->isChecked()) {
-        emit applyFitHeightSig(ui->heightInput->value());
+        emit applyFitHeightSignal(ui->heightInput->value());
     } else {
-        emit applyResizeSig(ui->widthInput->value(), ui->heightInput->value());
+        emit applyResizeSignal(ui->widthInput->value(), ui->heightInput->value());
     }
 }
 

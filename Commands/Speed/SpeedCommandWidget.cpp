@@ -5,11 +5,11 @@
 SpeedCommandWidget::SpeedCommandWidget(QWidget *parent) :
         QWidget(parent), ui(new Ui::SpeedCommandWidget) {
     ui->setupUi(this);
-    connect(ui->applyButton, &QPushButton::released, this, &SpeedCommandWidget::apply);
+    connect(ui->applyButton, &QPushButton::released, this, &SpeedCommandWidget::applySlot);
 }
 
-void SpeedCommandWidget::apply() {
-    emit applySpeedSig(ui->frameDelayInput->value() / 10);
+void SpeedCommandWidget::applySlot() {
+    emit applySpeedSignal(ui->frameDelayInput->value() / 10);
 }
 
 QPushButton *SpeedCommandWidget::getReturnBackBtn() const {

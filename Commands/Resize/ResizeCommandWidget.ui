@@ -61,14 +61,14 @@
                     <item>
                         <layout class="QVBoxLayout" name="aspectRatioLayout">
                             <item>
-                                <widget class="QCheckBox" name="fitWidth">
+                                <widget class="QCheckBox" name="fitWidthSlot">
                                     <property name="text">
                                         <string>Fit to width</string>
                                     </property>
                                 </widget>
                             </item>
                             <item>
-                                <widget class="QCheckBox" name="fitHeight">
+                                <widget class="QCheckBox" name="fitHeightSlot">
                                     <property name="text">
                                         <string>Fit to height</string>
                                     </property>

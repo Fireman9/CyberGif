@@ -47,6 +47,8 @@ signals:
 
     void fileClosedSignal();
 
+    void sizeChanged();
+
 private:
     QString filename;
     QPushButton *clickToOpenBut;

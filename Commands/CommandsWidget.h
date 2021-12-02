@@ -42,6 +42,10 @@ public slots:
 
     void toCropWidgetSlot();
 
+signals:
+
+    void sizeChanged();
+
 private:
     QPushButton *resize;
     QPushButton *speed;

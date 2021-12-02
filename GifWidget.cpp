@@ -16,7 +16,6 @@ GifWidget::GifWidget(QWidget *parent) {
     speedLbl = new QLabel();
     sizeLbl = new QLabel();
 
-    // TODO: move to stylesheet file
     clickToOpenBut->setStyleSheet("height: 100%;");
     gif->setAlignment(Qt::AlignVCenter | Qt::AlignHCenter);
 
@@ -99,6 +98,7 @@ void GifWidget::saveAsFileSlot() {
 void GifWidget::closeFileSlot() {
     setOpenFileButToScene();
     emit fileClosedSignal();
+    emit sizeChanged();
 }
 
 void GifWidget::stopGifSlot() {
@@ -110,6 +110,7 @@ void GifWidget::updateGifSlot() {
     gifFile->setFileName(".temp/temp.gif");
     gifFile->start();
     setInfo();
+    emit sizeChanged();
 }
 
 void GifWidget::setOpenFileButToScene() {

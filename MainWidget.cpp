@@ -15,15 +15,22 @@ MainWidget::MainWidget(QWidget *parent) {
 
     setLayout(mainLayout);
 
-    connect(gifWidget, &GifWidget::muteCommandButsSignal, this, &MainWidget::hideCommandsSlot);
-    connect(gifWidget, &GifWidget::unmuteCommandButsSignal, this, &MainWidget::showCommandsSlot);
+    connect(gifWidget, &GifWidget::muteCommandButsSignal,
+            this, &MainWidget::hideCommandsSlot);
+    connect(gifWidget, &GifWidget::unmuteCommandButsSignal,
+            this, &MainWidget::showCommandsSlot);
 
-    connect(gifWidget, &GifWidget::fileUploadedSignal, fileManagement, &FileManagement::loadFileSlot);
-    connect(gifWidget, &GifWidget::fileSaveSignal, fileManagement, &FileManagement::saveFileSlot);
-    connect(gifWidget, &GifWidget::fileSaveAsSignal, fileManagement, &FileManagement::saveFileSlot);
-    connect(gifWidget, &GifWidget::fileClosedSignal, fileManagement, &FileManagement::deleteFileSlot);
+    connect(gifWidget, &GifWidget::fileUploadedSignal,
+            fileManagement, &FileManagement::loadFileSlot);
+    connect(gifWidget, &GifWidget::fileSaveSignal,
+            fileManagement, &FileManagement::saveFileSlot);
+    connect(gifWidget, &GifWidget::fileSaveAsSignal,
+            fileManagement, &FileManagement::saveFileSlot);
+    connect(gifWidget, &GifWidget::fileClosedSignal,
+            fileManagement, &FileManagement::deleteFileSlot);
 
-    connect(commandsApplier, &CommandsApplier::updateSceneSignal, gifWidget, &GifWidget::updateGifSlot);
+    connect(commandsApplier, &CommandsApplier::updateSceneSignal,
+            gifWidget, &GifWidget::updateGifSlot);
 
     connect(commandsWidget->getResizeCommandWidget(), &ResizeCommandWidget::applyResizeSignal,
             commandsApplier, &CommandsApplier::resizeSlot);
@@ -39,6 +46,11 @@ MainWidget::MainWidget(QWidget *parent) {
             commandsApplier, &CommandsApplier::cropSlot);
     connect(commandsWidget->getOptimizeCommandWidget(), &OptimizeCommandWidget::applyOptimizeSignal,
             commandsApplier, &CommandsApplier::optimizeSlot);
+
+    connect(gifWidget, &GifWidget::sizeChanged,
+            this, &MainWidget::resizeToMinimumSlot);
+    connect(commandsWidget, &CommandsWidget::sizeChanged,
+            this, &MainWidget::resizeToMinimumSlot);
 }
 
 void MainWidget::hideCommandsSlot() {
@@ -47,4 +59,8 @@ void MainWidget::hideCommandsSlot() {
 
 void MainWidget::showCommandsSlot() {
     commandsWidget->show();
+}
+
+void MainWidget::resizeToMinimumSlot() {
+    resize(sizeHint());
 }

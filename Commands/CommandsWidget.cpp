@@ -64,31 +64,38 @@ void CommandsWidget::toCommandsWidgetSlot() {
     rotate->show();
     crop->show();
     optimize->show();
+
+    emit sizeChanged();
 }
 
 void CommandsWidget::toResizeWidgetSlot() {
     hideCommands();
     resizeCommandWidget->show();
+    emit sizeChanged();
 }
 
 void CommandsWidget::toSpeedWidgetSlot() {
     hideCommands();
     speedCommandWidget->show();
+    emit sizeChanged();
 }
 
 void CommandsWidget::toRotateWidgetSlot() {
     hideCommands();
     rotateCommandWidget->show();
+    emit sizeChanged();
 }
 
 void CommandsWidget::toCropWidgetSlot() {
     hideCommands();
     cropCommandWidget->show();
+    emit sizeChanged();
 }
 
 void CommandsWidget::toOptimizeWidgetSlot() {
     hideCommands();
     optimizeCommandWidget->show();
+    emit sizeChanged();
 }
 
 void CommandsWidget::hideCommands() {

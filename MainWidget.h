@@ -21,6 +21,8 @@ public slots:
 
     void showCommandsSlot();
 
+    void resizeToMinimumSlot();
+
 private:
     QVBoxLayout *mainLayout;
 

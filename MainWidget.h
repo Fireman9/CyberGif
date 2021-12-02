@@ -1,7 +1,6 @@
 #ifndef CYBERGIF_MAINWIDGET_H
 #define CYBERGIF_MAINWIDGET_H
 
-
 #include <QWidget>
 
 #include "GifWidget.h"
@@ -10,27 +9,24 @@
 #include "CommandsApplier.h"
 
 class MainWidget : public QWidget {
-Q_OBJECT
+ Q_OBJECT
+ public:
+  MainWidget(QWidget *parent = nullptr);
 
-public:
-    MainWidget(QWidget *parent = nullptr);
+ public slots:
+  void hideCommandsSlot();
 
-public slots:
+  void showCommandsSlot();
 
-    void hideCommandsSlot();
+  void resizeToMinimumSlot();
 
-    void showCommandsSlot();
+ private:
+  QVBoxLayout *mainLayout;
 
-    void resizeToMinimumSlot();
-
-private:
-    QVBoxLayout *mainLayout;
-
-    GifWidget *gifWidget;
-    CommandsWidget *commandsWidget;
-    FileManagement *fileManagement;
-    CommandsApplier *commandsApplier;
+  GifWidget *gifWidget;
+  CommandsWidget *commandsWidget;
+  FileManagement *fileManagement;
+  CommandsApplier *commandsApplier;
 };
-
 
 #endif //CYBERGIF_MAINWIDGET_H

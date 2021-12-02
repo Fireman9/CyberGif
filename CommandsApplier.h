@@ -5,27 +5,25 @@
 #include <QString>
 
 class CommandsApplier : public QObject {
-Q_OBJECT
-public slots:
+ Q_OBJECT
+ public slots:
+  void resizeSlot(int width, int height);
 
-    void resizeSlot(int width, int height);
+  void fitWidthSlot(int width);
 
-    void fitWidthSlot(int width);
+  void fitHeightSlot(int height);
 
-    void fitHeightSlot(int height);
+  void setSpeedSlot(int speed);
 
-    void setSpeedSlot(int speed);
+  void rotateSlot(int degrees);
 
-    void rotateSlot(int degrees);
+  void cropSlot(int x0, int y0, int width, int height);
 
-    void cropSlot(int x0, int y0, int width, int height);
+  void optimizeSlot();
 
-    void optimizeSlot();
+ signals:
+  void updateSceneSignal();
 
-signals:
-
-    void updateSceneSignal();
 };
-
 
 #endif //CYBERGIF_COMMANDSAPPLIER_H

@@ -4,34 +4,30 @@
 #include <QWidget>
 #include <QPushButton>
 
-
 QT_BEGIN_NAMESPACE
 namespace Ui { class RotateCommandWidget; }
 QT_END_NAMESPACE
 
 class RotateCommandWidget : public QWidget {
-Q_OBJECT
+ Q_OBJECT
+ public:
+  explicit RotateCommandWidget(QWidget *parent = nullptr);
 
-public:
-    explicit RotateCommandWidget(QWidget *parent = nullptr);
+  QPushButton *getReturnBackBtn() const;
 
-    QPushButton *getReturnBackBtn() const;
+  ~RotateCommandWidget() override;
 
-    ~RotateCommandWidget() override;
+ public slots:
+  void rotateRightSlot();
 
-public slots:
+  void rotateLeftSlot();
 
-    void rotateRightSlot();
+ signals:
+  void applyRotateSignal(int degrees);
 
-    void rotateLeftSlot();
+ private:
+  Ui::RotateCommandWidget *ui;
 
-signals:
-
-    void applyRotateSignal(int degrees);
-
-private:
-    Ui::RotateCommandWidget *ui;
 };
-
 
 #endif //CYBERGIF_ROTATECOMMANDWIDGET_HPP

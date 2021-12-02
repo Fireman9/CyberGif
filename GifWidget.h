@@ -1,7 +1,6 @@
 #ifndef CYBERGIF_GIFWIDGET_H
 #define CYBERGIF_GIFWIDGET_H
 
-
 #include <QWidget>
 #include <QString>
 #include <QLabel>
@@ -15,73 +14,70 @@
 #include <QFileInfo>
 
 class GifWidget : public QWidget {
-Q_OBJECT
-public:
-    GifWidget(QWidget *parent = nullptr);
+ Q_OBJECT
+ public:
+  GifWidget(QWidget *parent = nullptr);
 
-public slots:
+ public slots:
+  void openFileSlot();
 
-    void openFileSlot();
+  void saveFileSlot();
 
-    void saveFileSlot();
+  void saveAsFileSlot();
 
-    void saveAsFileSlot();
+  void closeFileSlot();
 
-    void closeFileSlot();
+  void stopGifSlot();
 
-    void stopGifSlot();
+  void updateGifSlot();
 
-    void updateGifSlot();
+ signals:
+  void muteCommandButsSignal();
 
-signals:
+  void unmuteCommandButsSignal();
 
-    void muteCommandButsSignal();
+  void fileUploadedSignal(const QString &filename);
 
-    void unmuteCommandButsSignal();
+  void fileSaveSignal(const QString &filename);
 
-    void fileUploadedSignal(const QString &filename);
+  void fileSaveAsSignal(const QString &filename);
 
-    void fileSaveSignal(const QString &filename);
+  void fileClosedSignal();
 
-    void fileSaveAsSignal(const QString &filename);
+  void sizeChanged();
 
-    void fileClosedSignal();
+ private:
+  QString filename;
+  QPushButton *clickToOpenBut;
+  QLabel *gif;
+  QMovie *gifFile;
+  QLabel *filenameLbl;
+  QLabel *widthLbl;
+  QLabel *heightLbl;
+  QLabel *speedLbl;
+  QLabel *sizeLbl;
 
-    void sizeChanged();
+  QToolBar *toolbar;
+  QToolButton *open;
+  QToolButton *save;
+  QToolButton *saveAs;
+  QToolButton *close;
 
-private:
-    QString filename;
-    QPushButton *clickToOpenBut;
-    QLabel *gif;
-    QMovie *gifFile;
-    QLabel *filenameLbl;
-    QLabel *widthLbl;
-    QLabel *heightLbl;
-    QLabel *speedLbl;
-    QLabel *sizeLbl;
+  QVBoxLayout *mainLayout;
+  QHBoxLayout *bodyLayout;
+  QVBoxLayout *infoLayout;
 
-    QToolBar *toolbar;
-    QToolButton *open;
-    QToolButton *save;
-    QToolButton *saveAs;
-    QToolButton *close;
+  void setOpenFileButToScene();
 
-    QVBoxLayout *mainLayout;
-    QHBoxLayout *bodyLayout;
-    QVBoxLayout *infoLayout;
+  void setGifToScene();
 
-    void setOpenFileButToScene();
+  void setToolBar();
 
-    void setGifToScene();
+  void setInfo();
 
-    void setToolBar();
+  void showInfo();
 
-    void setInfo();
-
-    void showInfo();
-
-    void hideInfo();
+  void hideInfo();
 };
-
 
 #endif //CYBERGIF_GIFWIDGET_H

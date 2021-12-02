@@ -1,7 +1,6 @@
 #ifndef CYBERGIF_COMMANDSWIDGET_H
 #define CYBERGIF_COMMANDSWIDGET_H
 
-
 #include <QWidget>
 #include <QHBoxLayout>
 #include <QPushButton>
@@ -13,56 +12,53 @@
 #include "Optimize/OptimizeCommandWidget.hpp"
 
 class CommandsWidget : public QWidget {
-Q_OBJECT
+ Q_OBJECT
+ public:
+  CommandsWidget(QWidget *parent = nullptr);
 
-public:
-    CommandsWidget(QWidget *parent = nullptr);
+  ResizeCommandWidget *getResizeCommandWidget() const;
 
-    ResizeCommandWidget *getResizeCommandWidget() const;
+  SpeedCommandWidget *getSpeedCommandWidget() const;
 
-    SpeedCommandWidget *getSpeedCommandWidget() const;
+  RotateCommandWidget *getRotateCommandWidget() const;
 
-    RotateCommandWidget *getRotateCommandWidget() const;
+  OptimizeCommandWidget *getOptimizeCommandWidget() const;
 
-    OptimizeCommandWidget *getOptimizeCommandWidget() const;
+  CropCommandWidget *getCropCommandWidget() const;
 
-    CropCommandWidget *getCropCommandWidget() const;
+ public slots:
+  void toCommandsWidgetSlot();
 
-public slots:
+  void toResizeWidgetSlot();
 
-    void toCommandsWidgetSlot();
+  void toSpeedWidgetSlot();
 
-    void toResizeWidgetSlot();
+  void toRotateWidgetSlot();
 
-    void toSpeedWidgetSlot();
+  void toOptimizeWidgetSlot();
 
-    void toRotateWidgetSlot();
+  void toCropWidgetSlot();
 
-    void toOptimizeWidgetSlot();
+ signals:
+  void sizeChanged();
 
-    void toCropWidgetSlot();
+ private:
+  QPushButton *resize;
+  QPushButton *speed;
+  QPushButton *rotate;
+  QPushButton *crop;
+  QPushButton *optimize;
 
-signals:
+  QHBoxLayout *mainLayout;
 
-    void sizeChanged();
+  ResizeCommandWidget *resizeCommandWidget;
+  SpeedCommandWidget *speedCommandWidget;
+  RotateCommandWidget *rotateCommandWidget;
+  OptimizeCommandWidget *optimizeCommandWidget;
+  CropCommandWidget *cropCommandWidget;
 
-private:
-    QPushButton *resize;
-    QPushButton *speed;
-    QPushButton *rotate;
-    QPushButton *crop;
-    QPushButton *optimize;
+  void hideCommands();
 
-    QHBoxLayout *mainLayout;
-
-    ResizeCommandWidget *resizeCommandWidget;
-    SpeedCommandWidget *speedCommandWidget;
-    RotateCommandWidget *rotateCommandWidget;
-    OptimizeCommandWidget *optimizeCommandWidget;
-    CropCommandWidget *cropCommandWidget;
-
-    void hideCommands();
 };
-
 
 #endif //CYBERGIF_COMMANDSWIDGET_H

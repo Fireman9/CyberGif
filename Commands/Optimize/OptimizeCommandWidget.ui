@@ -1,42 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
-    <class>OptimizeCommandWidget</class>
-    <widget class="QWidget" name="OptimizeCommandWidget">
-        <layout class="QVBoxLayout" name="mainLayout">
-            <item>
-                <widget class="QPushButton" name="returnBackBtn">
-                    <property name="text">
-                        <string>Back</string>
-                    </property>
-                </widget>
-            </item>
-            <item>
-                <layout class="QHBoxLayout" name="contentLayout">
-                    <item>
-                        <widget class="QLabel" name="infoLabel">
-                            <property name="text">
-                                <string>Optimize attempts to shrink the file size of GIF animation</string>
-                            </property>
-                        </widget>
-                    </item>
-                    <item>
-                        <spacer name="hSpacer">
-                            <property name="orientation">
-                                <enum>Qt::Horizontal</enum>
-                            </property>
-                        </spacer>
-                    </item>
-                    <item>
-                        <widget class="QPushButton" name="applyButton">
-                            <property name="text">
-                                <string>Optimize</string>
-                            </property>
-                        </widget>
-                    </item>
-                </layout>
-            </item>
-        </layout>
-    </widget>
-    <resources/>
-    <connections/>
+	<class>OptimizeCommandWidget</class>
+	<widget class="QWidget" name="OptimizeCommandWidget">
+		<layout class="QVBoxLayout" name="mainLayout">
+			<item>
+				<widget class="QPushButton" name="returnBackBtn">
+					<property name="text">
+						<string>Back</string>
+					</property>
+				</widget>
+			</item>
+			<item>
+				<layout class="QHBoxLayout" name="contentLayout">
+					<item>
+						<widget class="QLabel" name="infoLabel">
+							<property name="text">
+								<string>Optimize attempts to shrink the file size of GIF animation</string>
+							</property>
+						</widget>
+					</item>
+					<item>
+						<spacer name="hSpacer">
+							<property name="orientation">
+								<enum>Qt::Horizontal</enum>
+							</property>
+						</spacer>
+					</item>
+					<item>
+						<widget class="QPushButton" name="applyButton">
+							<property name="text">
+								<string>Optimize</string>
+							</property>
+						</widget>
+					</item>
+				</layout>
+			</item>
+		</layout>
+	</widget>
+	<resources/>
+	<connections/>
 </ui>

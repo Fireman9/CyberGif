@@ -4,32 +4,28 @@
 #include <QWidget>
 #include <QPushButton>
 
-
 QT_BEGIN_NAMESPACE
 namespace Ui { class OptimizeCommandWidget; }
 QT_END_NAMESPACE
 
 class OptimizeCommandWidget : public QWidget {
-Q_OBJECT
+ Q_OBJECT
+ public:
+  explicit OptimizeCommandWidget(QWidget *parent = nullptr);
 
-public:
-    explicit OptimizeCommandWidget(QWidget *parent = nullptr);
+  QPushButton *getReturnBackBtn() const;
 
-    QPushButton *getReturnBackBtn() const;
+  ~OptimizeCommandWidget() override;
 
-    ~OptimizeCommandWidget() override;
+ public slots:
+  void applySlot();
 
-public slots:
+ signals:
+  void applyOptimizeSignal();
 
-    void applySlot();
+ private:
+  Ui::OptimizeCommandWidget *ui;
 
-signals:
-
-    void applyOptimizeSignal();
-
-private:
-    Ui::OptimizeCommandWidget *ui;
 };
-
 
 #endif //CYBERGIF_OPTIMIZECOMMANDWIDGET_HPP

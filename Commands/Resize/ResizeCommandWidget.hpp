@@ -8,40 +8,36 @@
 #include <QPushButton>
 #include <QLabel>
 
-
 QT_BEGIN_NAMESPACE
 namespace Ui { class ResizeCommandWidget; }
 QT_END_NAMESPACE
 
 class ResizeCommandWidget : public QWidget {
-Q_OBJECT
+ Q_OBJECT
+ public:
+  explicit ResizeCommandWidget(QWidget *parent = nullptr);
 
-public:
-    explicit ResizeCommandWidget(QWidget *parent = nullptr);
+  QPushButton *getReturnBackBtn() const;
 
-    QPushButton *getReturnBackBtn() const;
+  ~ResizeCommandWidget() override;
 
-    ~ResizeCommandWidget() override;
+ public slots:
+  void applySlot();
 
-public slots:
+  void muteWidthSlot();
 
-    void applySlot();
+  void muteHeightSlot();
 
-    void muteWidthSlot();
+ signals:
+  void applyResizeSignal(int width, int height);
 
-    void muteHeightSlot();
+  void applyFitWidthSignal(int width);
 
-signals:
+  void applyFitHeightSignal(int height);
 
-    void applyResizeSignal(int width, int height);
+ private:
+  Ui::ResizeCommandWidget *ui;
 
-    void applyFitWidthSignal(int width);
-
-    void applyFitHeightSignal(int height);
-
-private:
-    Ui::ResizeCommandWidget *ui;
 };
-
 
 #endif //CYBERGIF_RESIZECOMMANDWIDGET_HPP

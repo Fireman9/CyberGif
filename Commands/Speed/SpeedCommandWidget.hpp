@@ -4,32 +4,28 @@
 #include <QWidget>
 #include <QPushButton>
 
-
 QT_BEGIN_NAMESPACE
 namespace Ui { class SpeedCommandWidget; }
 QT_END_NAMESPACE
 
 class SpeedCommandWidget : public QWidget {
-Q_OBJECT
+ Q_OBJECT
+ public:
+  explicit SpeedCommandWidget(QWidget *parent = nullptr);
 
-public:
-    explicit SpeedCommandWidget(QWidget *parent = nullptr);
+  QPushButton *getReturnBackBtn() const;
 
-    QPushButton *getReturnBackBtn() const;
+  ~SpeedCommandWidget() override;
 
-    ~SpeedCommandWidget() override;
+ public slots:
+  void applySlot();
 
-public slots:
+ signals:
+  void applySpeedSignal(int frameDelay);
 
-    void applySlot();
+ private:
+  Ui::SpeedCommandWidget *ui;
 
-signals:
-
-    void applySpeedSignal(int frameDelay);
-
-private:
-    Ui::SpeedCommandWidget *ui;
 };
-
 
 #endif //CYBERGIF_SPEEDCOMMANDWIDGET_HPP

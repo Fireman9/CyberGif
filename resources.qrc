@@ -1,6 +1,6 @@
 <RCC>
-    <qresource prefix="/images">
-        <file alias="rotateLeftIcon">images/left.png</file>
-        <file alias="rotateRightIcon">images/right.png</file>
-    </qresource>
+	<qresource prefix="/images">
+		<file alias="rotateLeftIcon">images/left.png</file>
+		<file alias="rotateRightIcon">images/right.png</file>
+	</qresource>
 </RCC>

@@ -4,32 +4,28 @@
 #include <QWidget>
 #include <QPushButton>
 
-
 QT_BEGIN_NAMESPACE
 namespace Ui { class CropCommandWidget; }
 QT_END_NAMESPACE
 
 class CropCommandWidget : public QWidget {
-Q_OBJECT
+ Q_OBJECT
+ public:
+  explicit CropCommandWidget(QWidget *parent = nullptr);
 
-public:
-    explicit CropCommandWidget(QWidget *parent = nullptr);
+  QPushButton *getReturnBackBtn() const;
 
-    QPushButton *getReturnBackBtn() const;
+  ~CropCommandWidget() override;
 
-    ~CropCommandWidget() override;
+ public slots:
+  void applySlot();
 
-public slots:
+ signals:
+  void applyCropSignal(int x0, int y0, int width, int height);
 
-    void applySlot();
+ private:
+  Ui::CropCommandWidget *ui;
 
-signals:
-
-    void applyCropSignal(int x0, int y0, int width, int height);
-
-private:
-    Ui::CropCommandWidget *ui;
 };
-
 
 #endif //CYBERGIF_CROPCOMMANDWIDGET_HPP

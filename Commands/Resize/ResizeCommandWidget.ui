@@ -1,92 +1,92 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
-    <class>ResizeCommandWidget</class>
-    <widget class="QWidget" name="ResizeCommandWidget">
-        <layout class="QVBoxLayout" name="mainLayout">
-            <item>
-                <widget class="QPushButton" name="returnBackBtn">
-                    <property name="text">
-                        <string>Back</string>
-                    </property>
-                </widget>
-            </item>
-            <item>
-                <layout class="QHBoxLayout" name="bottomLayout">
-                    <item>
-                        <layout class="QVBoxLayout" name="verticalLayout_2">
-                            <item>
-                                <layout class="QHBoxLayout" name="widthLayout">
-                                    <item>
-                                        <widget class="QLabel" name="widthLbl">
-                                            <property name="text">
-                                                <string>Width:</string>
-                                            </property>
-                                        </widget>
-                                    </item>
-                                    <item>
-                                        <widget class="QSpinBox" name="widthInput">
-                                            <property name="minimum">
-                                                <number>10</number>
-                                            </property>
-                                            <property name="maximum">
-                                                <number>1920</number>
-                                            </property>
-                                        </widget>
-                                    </item>
-                                </layout>
-                            </item>
-                            <item>
-                                <layout class="QHBoxLayout" name="heightLayout">
-                                    <item>
-                                        <widget class="QLabel" name="heightLbl">
-                                            <property name="text">
-                                                <string>Height:</string>
-                                            </property>
-                                        </widget>
-                                    </item>
-                                    <item>
-                                        <widget class="QSpinBox" name="heightInput">
-                                            <property name="minimum">
-                                                <number>10</number>
-                                            </property>
-                                            <property name="maximum">
-                                                <number>1080</number>
-                                            </property>
-                                        </widget>
-                                    </item>
-                                </layout>
-                            </item>
-                        </layout>
-                    </item>
-                    <item>
-                        <layout class="QVBoxLayout" name="aspectRatioLayout">
-                            <item>
-                                <widget class="QCheckBox" name="fitWidth">
-                                    <property name="text">
-                                        <string>Fit to width</string>
-                                    </property>
-                                </widget>
-                            </item>
-                            <item>
-                                <widget class="QCheckBox" name="fitHeight">
-                                    <property name="text">
-                                        <string>Fit to height</string>
-                                    </property>
-                                </widget>
-                            </item>
-                        </layout>
-                    </item>
-                    <item>
-                        <widget class="QPushButton" name="applyBtn">
-                            <property name="text">
-                                <string>Apply</string>
-                            </property>
-                        </widget>
-                    </item>
-                </layout>
-            </item>
-        </layout>
-    </widget>
-    <resources/>
-    <connections/>
+	<class>ResizeCommandWidget</class>
+	<widget class="QWidget" name="ResizeCommandWidget">
+		<layout class="QVBoxLayout" name="mainLayout">
+			<item>
+				<widget class="QPushButton" name="returnBackBtn">
+					<property name="text">
+						<string>Back</string>
+					</property>
+				</widget>
+			</item>
+			<item>
+				<layout class="QHBoxLayout" name="bottomLayout">
+					<item>
+						<layout class="QVBoxLayout" name="verticalLayout_2">
+							<item>
+								<layout class="QHBoxLayout" name="widthLayout">
+									<item>
+										<widget class="QLabel" name="widthLbl">
+											<property name="text">
+												<string>Width:</string>
+											</property>
+										</widget>
+									</item>
+									<item>
+										<widget class="QSpinBox" name="widthInput">
+											<property name="minimum">
+												<number>10</number>
+											</property>
+											<property name="maximum">
+												<number>1920</number>
+											</property>
+										</widget>
+									</item>
+								</layout>
+							</item>
+							<item>
+								<layout class="QHBoxLayout" name="heightLayout">
+									<item>
+										<widget class="QLabel" name="heightLbl">
+											<property name="text">
+												<string>Height:</string>
+											</property>
+										</widget>
+									</item>
+									<item>
+										<widget class="QSpinBox" name="heightInput">
+											<property name="minimum">
+												<number>10</number>
+											</property>
+											<property name="maximum">
+												<number>1080</number>
+											</property>
+										</widget>
+									</item>
+								</layout>
+							</item>
+						</layout>
+					</item>
+					<item>
+						<layout class="QVBoxLayout" name="aspectRatioLayout">
+							<item>
+								<widget class="QCheckBox" name="fitWidth">
+									<property name="text">
+										<string>Fit to width</string>
+									</property>
+								</widget>
+							</item>
+							<item>
+								<widget class="QCheckBox" name="fitHeight">
+									<property name="text">
+										<string>Fit to height</string>
+									</property>
+								</widget>
+							</item>
+						</layout>
+					</item>
+					<item>
+						<widget class="QPushButton" name="applyBtn">
+							<property name="text">
+								<string>Apply</string>
+							</property>
+						</widget>
+					</item>
+				</layout>
+			</item>
+		</layout>
+	</widget>
+	<resources/>
+	<connections/>
 </ui>
